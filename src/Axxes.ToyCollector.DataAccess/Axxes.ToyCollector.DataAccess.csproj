@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator" Version="5.0.0" />
+    <PackageReference Include="FluentMigrator.Runner" Version="5.0.0" />
+    <PackageReference Include="FluentMigrator.Runner.SqlServer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Axxes.ToyCollector.Core.Contracts\Axxes.ToyCollector.Core.Contracts.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(TargetDir)*.dll $(SolutionDir)\Axxes.ToyCollector.Web\bin\Debug\net8.0\ /y&#xD;&#xA;xcopy $(TargetDir)*.pdb $(SolutionDir)\Axxes.ToyCollector.Web\bin\Debug\net8.0\ /y&#xD;&#xA;xcopy $(TargetDir)*.deps.json $(SolutionDir)\Axxes.ToyCollector.Web\bin\Debug\net8.0\ /y" />
+  </Target>
+
+</Project>

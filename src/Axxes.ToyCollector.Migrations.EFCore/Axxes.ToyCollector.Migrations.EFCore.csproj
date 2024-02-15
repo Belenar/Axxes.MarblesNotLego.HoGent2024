@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Axxes.ToyCollector.DataAccess\Axxes.ToyCollector.DataAccess.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(TargetDir)*.dll $(SolutionDir)\Axxes.ToyCollector.Web\bin\Debug\net8.0\ /y&#xD;&#xA;xcopy $(TargetDir)*.pdb $(SolutionDir)\Axxes.ToyCollector.Web\bin\Debug\net8.0\ /y&#xD;&#xA;xcopy $(TargetDir)*.deps.json $(SolutionDir)\Axxes.ToyCollector.Web\bin\Debug\net8.0\ /y" />
+  </Target>
+
+</Project>
