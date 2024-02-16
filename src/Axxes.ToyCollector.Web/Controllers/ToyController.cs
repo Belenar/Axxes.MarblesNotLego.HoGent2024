@@ -25,7 +25,8 @@ namespace Axxes.ToyCollector.Web.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Toy>>> Get()
         {
-            return await _repository.GetAll();
+            var result = await _repository.GetAll();
+            return result;
         }
 
         // GET: api/Toy/5

@@ -32,7 +32,10 @@ namespace Axxes.ToyCollector.DataAccess.EF
         {
             modelBuilder.ApplyConfiguration(new ToyMapping());
 
-            //TODO 5: Load DbContext Extensions
+            foreach (var extension in _extensions)
+            {
+                extension.LoadToyContextExtensions(modelBuilder);
+            }
         }
 
         public DbSet<Toy> Toys { get; set; }
