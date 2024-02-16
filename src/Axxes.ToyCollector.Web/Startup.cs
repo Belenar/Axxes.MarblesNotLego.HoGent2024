@@ -78,7 +78,7 @@ namespace Axxes.ToyCollector.Web
                 Path.Combine(Environment.ContentRootPath, "bin"),"Axxes.ToyCollector.*.dll", 
                 SearchOption.AllDirectories);
             
-            //TODO 2: Load types from assemblies
+            services.LoadConfiguredTypesFromFiles(inheritedTypesRegistry, allDeployedDllFiles);
         }
 
 
